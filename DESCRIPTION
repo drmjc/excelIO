@@ -4,13 +4,14 @@ Title: Fast import and export of Microsoft Excel files
 Version: 1.0
 Date: 2012-03-12
 Author: Mark Cowley
-Requires: gdata
+Depends:
+    gdata
 Imports:
     gdata
 Maintainer: Mark Cowley <m.cowley@garvan.org.au>
 Description: Sometimes it's just easier to read & write Microsoft
-    Excel files. This packages allows import and export of Microsoft
-    Excel (xls) files. The excellent gdata package already provides
+    Excel files. This package allows import (XLS and XLSX) and export (XLS) of Microsoft
+    Excel files. The excellent \code{gdata} package already provides
     read.xls, but occasionally the final column will containing trailing
     spaces, so my version fixes this.
     Users must install the perl module Spreadsheet::WriteExcel, by John McNamara
@@ -24,3 +25,4 @@ Collate:
     'is.excel.file.R'
     'get.full.path.R'
     'is.dir.R'
+    'is.tsv.file.R'
