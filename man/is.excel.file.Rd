@@ -15,23 +15,26 @@
   which must exist}
 }
 \value{
-  A logical vector of length(path), where the values are
-  \code{TRUE} if the path is an XLS, XLSX, or both,
-  \code{FALSE} otherwise, for is.xls.file, is.xlsx.file, or
-  is.excel.file, respectively.
+  A \code{logical vector} of \code{length(path)}, where the
+  values are \code{TRUE} if the path is an XLS, XLSX, or
+  both, \code{FALSE} otherwise, for
+  \code{\link{is.xls.file}}, \code{\link{is.xlsx.file}}, or
+  \code{\link{is.excel.file}}, respectively.
 }
 \description{
   Rather than just checking the file extension, this
   function checks whether the contents of the file are a
-  Microsoft Excel file, using the GNU 'file' program, thus
-  this will not work on Windows. Note that XLS files can
-  have different file signatures depending where they are
-  saved from/created.
+  Microsoft Excel file, using the \code{GNU file} program,
+  thus this will not work on Windows. \code{file} works by
+  checking the file signature to see what file type it is.
+  Note that XLS files can have different file signatures
+  depending where they are saved from/created.
 }
 \examples{
 \dontrun{
 # df <- data.frame(A=1:10, B=letters[1:10], C=LETTERS[1:10], D=TRUE, E=FALSE)
-write.table(iris, "tmp.tsv", quote=F, sep="\\t")
+require(datasets)
+write.table(iris, "tmp.tsv", quote=FALSE, sep="\\t")
 write.csv(iris, "tmp.csv")
 require(dataframes2xls)
 write.xls(iris, "tmp.xls")
