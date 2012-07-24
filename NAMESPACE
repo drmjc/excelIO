@@ -1,7 +1,5 @@
-export(get.full.path)
-export(is.dir)
+export(is.csv.file)
 export(is.excel.file)
-export(is.file)
 export(is.tsv.file)
 export(is.xls.file)
 export(is.xlsx.file)
