@@ -1,4 +1,4 @@
 library(testthat)
-# library(excelIO)
+library(excelIO)
 
 test_package("excelIO")
