@@ -1,5 +1,5 @@
 context("Export testing")
-
+require(datasets)
 # test_that("input test files exist", {
 # 	expect_true(file.exists(system.file("examples", "iris.xls", package="excelIO")))
 # })
