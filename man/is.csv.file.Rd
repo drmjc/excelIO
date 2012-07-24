@@ -1,0 +1,42 @@
+\name{is.csv.file}
+\alias{is.csv.file}
+\title{is the file a comma separated text file?}
+\usage{
+  is.csv.file(path)
+}
+\arguments{
+  \item{path}{a character vector: the path(s) to file(s)
+  which must exist}
+}
+\value{
+  a named logical vector of length(path), where names are
+  the paths, and values are \code{TRUE} if the path is an
+  excel file, \code{FALSE} otherwise.
+}
+\description{
+  Rather than just checking the file extension, this
+  function checks whether the contents of the file contain
+  tabs. The file paths must exist, they must be ASCII test,
+  and must have at least one comma in one of the lines to
+  qualify.
+}
+\note{
+  We could make this more stringent by requiring that all
+  lines contain the same number of comma's, but need to
+  consider how to skip header lines, and column name lines
+  which can contain NCOL-1 columns (if written using
+  write.table), and what to do with rogue comma's in the
+  middle of column
+}
+\examples{
+\dontrun{
+is.csv.file("./tmp.xls")
+is.csv.file("./tmp.tsv")
+is.csv.file("./tmp.csv")
+is.csv.file(c("./tmp.xls", "./tmp.tsv", "./tmp.csv"))
+}
+}
+\author{
+  Mark Cowley, 2012-02-01
+}
+
