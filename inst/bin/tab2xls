@@ -36,16 +36,28 @@
 #
 # Mark Cowley, 2009-01-20
 #
-# original description from John McNemara at bottom of this src code
+# original description from John McNamara at bottom of this src code
 #
 ###############################################################################
+
+################################################################################
+# CHANGELOG
+# 2012-12-05: added BEGIN block, and inst/perl/Spreadsheet, to make this more portable
+################################################################################
+
+BEGIN {
+  use File::Basename;
+  use File::Spec;
+  # Add current path to perl library search path
+  use lib dirname($0);
+  use lib File::Spec->catfile(dirname(dirname($0)), "perl")
+}
 
 
 use strict;
 use Spreadsheet::WriteExcel;
 use File::Temp qw/ tempfile mktemp /;
 use File::Copy;
-use File::Basename;
 
 # print "N arguments: $#ARGV.\n";
 if ($#ARGV == -1) {
