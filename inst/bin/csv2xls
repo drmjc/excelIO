@@ -33,7 +33,17 @@ usage: csv2xls [-s <sep>] [-q <quot>] [-w <width>] [-d <dtfmt>]
        -u         CSV is UTF8
 EOU
     exit $err;
-    } # usage
+} # usage
+
+
+BEGIN {
+	use File::Basename;
+	use File::Spec;
+	# Add current path to perl library search path
+	use lib dirname($0);
+	use lib File::Spec->catfile(dirname(dirname($0)), "perl")
+}
+
 
 use Getopt::Long qw(:config bundling nopermute passthrough);
 my $sep;	# Set after reading first line in a flurry attempt to auto-detect
