@@ -1,9 +1,9 @@
 \name{write.xls}
 \alias{write.xls}
-\title{Write to Microsoft Excel}
+\title{Write to Microsoft Excel XLS file}
 \usage{
   write.xls(x, xls, verbose = FALSE, row.names = FALSE,
-    ...)
+    col.names = TRUE, ...)
 }
 \arguments{
   \item{x}{either a data.frame, or a list of data.frames.
@@ -26,10 +26,14 @@
   write the \code{row.names} out, and use use the supplied
   word as the column name for the rownames else error}
 
-  \item{\dots}{additional arguments passed to write.delim}
+  \item{col.names}{logical: If \code{TRUE} then write out
+  the column names.}
+
+  \item{\dots}{additional arguments passed to
+  \code{\link{write.delim}}}
 }
 \value{
-  none. writes an excel file.
+  none. writes an excel 'xls' file.
 }
 \description{
   Write a \code{matrix} or \code{data.frame} to a genuine
@@ -37,10 +41,10 @@
   dashed underline. Columns are centred.
 }
 \details{
-  Uses a perl module called Spreadsheet::WriteExcel, by
-  John McNamara, a perl program called tab2xls, based on a
-  program of the same name also by JM. This R code borrows
-  the structure from \code{gdata}'s excellent
+  Uses a perl module called \code{Spreadsheet::WriteExcel},
+  by John McNamara, a perl program called \code{tab2xls},
+  based on a program of the same name also by JM. This R
+  code borrows the structure from \code{gdata}'s excellent
   \code{\link[gdata]{read.xls}} function.
 }
 \note{

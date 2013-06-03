@@ -1,10 +1,10 @@
-#' Write to Microsoft Excel
+#' Write to Microsoft Excel XLS file
 #' 
 #' Write a \code{matrix} or \code{data.frame} to a genuine Microsoft Excel file.
 #' The first row is bold, italics, dashed underline. Columns are centred.
 #' 
-#' Uses a perl module called Spreadsheet::WriteExcel, by John McNamara,
-#' a perl program called tab2xls, based on a program of the same name also by
+#' Uses a perl module called \code{Spreadsheet::WriteExcel}, by John McNamara,
+#' a perl program called \code{tab2xls}, based on a program of the same name also by
 #' JM.
 #' This R code borrows the structure from \code{gdata}'s excellent 
 #' \code{\link[gdata]{read.xls}} function.
@@ -32,12 +32,18 @@
 #'   like \code{write.table(row.names=TRUE)} would do) if \code{row.names} is a character
 #'   vector of length 1, then write the \code{row.names} out, and use use the supplied
 #'   word as the column name for the rownames else error
-#' @param \dots additional arguments passed to write.delim
-#' @return none. writes an excel file.
+#' @param col.names logical: If \code{TRUE} then write out the column names.
+#' @param \dots additional arguments passed to \code{\link{write.delim}}
+#' @return none. writes an excel 'xls' file.
 #' @author Mark Cowley, 2009-01-20
 #' @seealso \code{\link{write.table}} \code{\link{read.delim}} \code{\link[gdata]{read.xls}}
 #' @export
-write.xls <- function(x, xls, verbose=FALSE, row.names=FALSE, ...) {
+#' f <- tempfile(fileext=".xls")
+#' write.xls(iris, f)
+#' x <- list(A=iris[1:5, ], B=iris)
+#' write.xls(x, f)
+#' 
+write.xls <- function(x, xls, verbose=FALSE, row.names=FALSE, col.names=TRUE, ...) {
 	!missing(x) || stop("Must specify x")
 	!missing(xls) && file.exists(dirname(xls)) || stop(sprintf("Cannot print to %s because %s does not exist.\n", xls, dirname(xls)))
 
@@ -45,7 +51,7 @@ write.xls <- function(x, xls, verbose=FALSE, row.names=FALSE, ...) {
 		writeLines.xls(x, xls, row.names==TRUE)
 		return("done")
 	}
-	
+		
 	if( is.matrix(x) || is.data.frame(x) ) {
 		x <- list(x)
 		names(x) <- "Sheet1"
@@ -54,6 +60,15 @@ write.xls <- function(x, xls, verbose=FALSE, row.names=FALSE, ...) {
 		if(is.null(names(x))) {
 			names(x) <- paste("Sheet", 1:length(x), sep="")
 		}
+	}
+	
+	# check that all tables are small enough to fit in an XLS
+	for(elem in seq(along=x)) {
+		if( (nrow(x[[elem]]) + as.numeric(col.names)) > 65536 ) {
+			warning("data exceeds the 65,536 maximum number of rows allowed in an excel file")
+			x[[elem]] <- x[[elem]][1:(65536 - col.names), ]
+		}
+		
 	}
 
 	###
@@ -71,7 +86,7 @@ write.xls <- function(x, xls, verbose=FALSE, row.names=FALSE, ...) {
 	for(i in 1:length(x)) {
 		f <- paste(substring(names(x)[i], 1, 31), "xls", sep=".")
 		txtfiles[i] <- file.path(dir, f)
-		write.delim(x[[i]], txtfiles[i], row.names=row.names, ...)
+		write.delim(x[[i]], txtfiles[i], row.names=row.names, col.names=col.names, ...)
 	}
 	# format these file names suitable for a system call
 	xls.cmd <- shQuote(path.expand(xls))
@@ -99,3 +114,5 @@ write.xls <- function(x, xls, verbose=FALSE, row.names=FALSE, ...) {
 		stop("Warning, some temp files were not deleted.\n")
 
 }
+# CHANGELOG
+# 2013-04-15: bug fix, when x is a list.
