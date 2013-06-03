@@ -2,7 +2,7 @@ Package: excelIO
 Type: Package
 Title: Fast import and export of Microsoft Excel files
 Version: 1.0.2
-Date: 2013-04-15
+Date: 2013-06-03
 Author: Mark Cowley
 Maintainer: Mark Cowley <m.cowley@garvan.org.au>
 Description: Sometimes it's just easier to read & write Microsoft Excel files.
