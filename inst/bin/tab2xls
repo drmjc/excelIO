@@ -50,7 +50,8 @@ BEGIN {
   use File::Spec;
   # Add current path to perl library search path
   use lib dirname($0);
-  use lib File::Spec->catfile(dirname(dirname($0)), "perl")
+  # Add ../perl library search path
+  use lib File::Spec->catfile(dirname(dirname($0)), "perl");
 }
 
 
