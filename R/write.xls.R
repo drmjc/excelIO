@@ -38,6 +38,7 @@
 #' @author Mark Cowley, 2009-01-20
 #' @seealso \code{\link{write.table}} \code{\link{read.delim}} \code{\link[gdata]{read.xls}}
 #' @export
+#' @examples
 #' f <- tempfile(fileext=".xls")
 #' write.xls(iris, f)
 #' x <- list(A=iris[1:5, ], B=iris)

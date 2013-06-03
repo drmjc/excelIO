@@ -55,6 +55,12 @@
   which country you are in.\cr install CPAN\cr reload
   cpan\cr install Spreadsheet::WriteExcel\cr
 }
+\examples{
+f <- tempfile(fileext=".xls")
+write.xls(iris, f)
+x <- list(A=iris[1:5, ], B=iris)
+write.xls(x, f)
+}
 \author{
   Mark Cowley, 2009-01-20
 }
