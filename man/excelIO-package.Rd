@@ -9,14 +9,16 @@
   Microsoft Excel (xls) files. The excellent gdata package
   already provides read.xls, but occasionally the final
   column will containing trailing spaces, so my version
-  fixes this. Users must install the perl module
-  Spreadsheet::WriteExcel, by John McNamara
+  fixes this.
 }
 \details{
-  Most of the heavy lifting for this package is from from
-  \sQuote{gdata}, and the Spreadsheet::WriteExcel Perl
-  module by John McNamara
-
+  Reading excel files is powered by the \sQuote{gdata}
+  package, and writing excel files powered by the
+  Spreadsheet::WriteExcel Perl module by John McNamara.
+  Users must install Spreadsheet::WriteExcel system-wide;
+  to do this, see \code{\link{write.xls}}.
+}
+\section{Key functions}{
   \code{\link{read.xls}} imports a worksheet from an Excel
   file.
 
