@@ -27,7 +27,6 @@
 #' @return a \code{data.frame}
 #' @author Mark Cowley, 2009-01-22
 #' @export
-#' @importFrom gdata read.xls trim
 read.xls <- function(xls, sheet = 1, verbose=FALSE, ...) {
 	!missing(xls) || stop("xls must be the path to an excel file")
 	is.excel.file(xls) || stop("xls is not a Microsoft Excel file. see ?is.excel.file")

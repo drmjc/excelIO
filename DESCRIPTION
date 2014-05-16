@@ -14,8 +14,6 @@ Description: Sometimes it's just easier to read & write Microsoft Excel files.
 License: GPL-2
 Depends:
     gdata
-Imports:
-    gdata
 Suggests:
     testthat,
     datasets
