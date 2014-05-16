@@ -73,7 +73,7 @@ write.xls <- function(x, xls, verbose=FALSE, row.names=FALSE, col.names=TRUE, ..
 	}
 
 	###
-	tab2xls <- file.path(.path.package('excelIO'), 'bin', 'tab2xls')
+	tab2xls <- file.path(path.package('excelIO'), 'bin', 'tab2xls')
 	file.exists(tab2xls) || stop("Couldn't find tab2xls, thus can't create Excel files. Are you sure you have excelIO installed?")
 	###
 
