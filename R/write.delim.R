@@ -50,7 +50,7 @@ write.delim <- function(x, file, na="---",
 		row.names <- TRUE
 	}
 	else if( is.logical(row.names) && row.names ) {
-		x <- data.frame(rownames(x), x)
+		x <- data.frame(rownames(x), x, check.names=FALSE)
 		colnames(x)[1] <- ""
 		row.names <- FALSE
 	}
@@ -59,7 +59,7 @@ write.delim <- function(x, file, na="---",
 		row.names <- FALSE
 	}
 	else if( is.character(row.names) && length(row.names) == 1 ) {
-		x <- data.frame(rownames(x), x)
+		x <- data.frame(rownames(x), x, check.names=FALSE)
 		colnames(x)[1] <- row.names
 		row.names <- FALSE
 	}
