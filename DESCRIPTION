@@ -1,15 +1,15 @@
 Package: excelIO
 Type: Package
 Title: Fast import and export of Microsoft Excel files
-Version: 1.1.0
-Date: 2014-11-03
+Version: 1.2.0
+Date: 2016-04-14
 Author: Mark Cowley
 Maintainer: Mark Cowley <m.cowley@garvan.org.au>
-Description: This package allows import (XLS and XLSX) and export (XLS) of
+Description: This package allows import (XLS and XLSX) and export (XLS, XLSX) of
     Microsoft Excel files. The excellent \code{gdata} package already provides
     \code{read.xls}, but occasionally the final column will containing trailing
-    spaces, so my version fixes this. Users must install the perl module
-    \code{Spreadsheet::WriteExcel}, by John McNamara
+    spaces, so my version fixes this. This also writes single- and multi-sheet XLS
+    and XLSX worksheets.
 License: GPL-2
 Depends:
     gdata

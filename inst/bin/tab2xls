@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/usr/bin/env perl -w
 
 ###############################################################################
 # 
@@ -7,6 +7,9 @@
 # 	http://search.cpan.org/~jmcnamara/Spreadsheet-WriteExcel/lib/Spreadsheet/WriteExcel.pm
 # 	http://www.koders.com/perl/fid4BF8757D5F59279297DF6A41988B1A5BF4D46047.aspx?s=excel#L5
 # 	http://www.koders.com/perl/fid4BF8757D5F59279297DF6A41988B1A5BF4D46047.aspx?s=excel#L5
+#
+# UPDATE (2016-04-14):
+# Consider using tab2xlsx which makes XLSX files.
 #
 # Usage:
 #	1. tab2xls txtfile1.txt [txtfile2.txt [...]] outfile.xls	creates outfile.xls
@@ -104,7 +107,7 @@ else { # else the last arg is the outfile, and first file(s) are the txtfiles.
 #
 # Create a new Excel workbook
 #
-my $workbook  = Spreadsheet::WriteExcel->new($out);
+my $workbook = Spreadsheet::WriteExcel->new($out);
 
 #
 # define the default cell format

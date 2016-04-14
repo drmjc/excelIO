@@ -1,6 +1,6 @@
 #' Write to Microsoft Excel XLS file
 #' 
-#' Write a \code{matrix} or \code{data.frame} to a genuine Microsoft Excel file.
+#' Write a \code{matrix} or \code{data.frame} to a genuine Microsoft Excel XLS file.
 #' The first row is bold, italics, dashed underline. Columns are centred.
 #' 
 #' Uses a perl module called \code{Spreadsheet::WriteExcel}, by John McNamara,
@@ -9,22 +9,18 @@
 #' This R code borrows the structure from \code{gdata}'s excellent 
 #' \code{\link[gdata]{read.xls}} function.
 #' 
-#' @note Users must install the Spreadsheet::WriteExcel Perl module.\cr
-#' For OSX users, this involves:\cr
+#' @note Installation
+#' It's not that widely tested, but this package does include the necessary perl libraries to
+#' write XLS files. If you're struggling though, install the `Spreadsheet::WriteExcel` Perl module
+#' via CPAN or similar. For OSX users, this involves:\cr
 #' sudo perl -e shell -MCPAN\cr
 #' install Spreadsheet::WriteExcel\cr
-#' - or -\cr
-#' sudo cpan\cr
-#' ### accept the defaults, and set up which country you are in.\cr
-#' install CPAN\cr
-#' reload cpan\cr
-#' install Spreadsheet::WriteExcel\cr
 #' 
-#' @param x either a data.frame, or a list of data.frames. if a list of
-#'   data.frames, then each data.frame will become a worksheet in the resulting
+#' @param x either a \code{data.frame}, or a list of \code{data.frame}s. if a list of
+#'   \code{data.frame}s, then each \code{data.frame} will become a worksheet in the resulting
 #'   workbook.
 #' @param xls the xls file to be created.
-#' @param verbose TRUE/FALSE
+#' @param verbose logical: print messages?
 #' @param row.names DIFFERENT TO \code{\link{write.table}}. Can be either \code{TRUE}, \code{FALSE}, \code{NULL},
 #'   \code{NA}, or a \code{character(1)}. if \code{TRUE} then row.names will be written out, with a
 #'   blank column header, if \code{FALSE}, then no row names will be written out, if
@@ -36,7 +32,7 @@
 #' @param \dots additional arguments passed to \code{\link{write.delim}}
 #' @return none. writes an excel 'xls' file.
 #' @author Mark Cowley, 2009-01-20
-#' @seealso \code{\link{write.table}} \code{\link{read.delim}} \code{\link[gdata]{read.xls}}
+#' @seealso \code{\link{write.xlsx}} \code{\link{write.table}} \code{\link{read.delim}} \code{\link[gdata]{read.xls}}
 #' @export
 #' @examples
 #' f <- tempfile(fileext=".xls")

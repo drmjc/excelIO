@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 ##################
 # Function to take a csv file (or otherwise delimited file) and create an xls file.
 # This is taken from the Perl module Text::CSV_XS. It has not been changed in any way (except to cleanup some of the florid grammar!!).

@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl -w
 #~ Converter Script for XLS to TSV.  Handles Multiple Tabs into separate files.
 #~ (c)2004 Anima Legato <l3gatosan@gmail.com>
 #~
