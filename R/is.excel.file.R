@@ -78,11 +78,13 @@ is.xlsx.file <- function(path) {
 	for(i in seq(along=path)) {
 		file.out <- system( paste("file -b", shQuote(path[i])), intern=TRUE, ignore.stderr=TRUE)
 		res[i] <- 
-			if( type == "xlsx") grepl("Zip archive data", file.out) && any(grepl("^xl/", unzip(path[i], list=TRUE)$Name))
-			else if( type == "xls" ) grepl("Excel", file.out) || grepl("CDF V2 Document", file.out)
+			if( type == "xlsx") grepl("Zip archive data", file.out) || grepl("Microsoft Excel 2007", file.out)
+			else if( type == "xls" ) grepl("Excel", file.out) || grepl("CDF V2 Document", file.out) || grepl("Composite Document File V2 Document", file.out)
 	}
 	
 	res
 }
 # 2012-07-20
 # - get.full.path -> normalizePath
+# 2017-01-17
+# - updated file -b outputs to work on MacOS Sierra
