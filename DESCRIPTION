@@ -11,10 +11,9 @@ Description: This package allows import (XLS and XLSX) and export (XLS, XLSX)
     spaces, so my version fixes this. This also writes single- and multi-sheet XLS
     and XLSX worksheets.
 License: GPL-2
-Depends:
+Imports:
     gdata
 Suggests:
     testthat,
     datasets
-Enhances: gdata
 RoxygenNote: 5.0.1

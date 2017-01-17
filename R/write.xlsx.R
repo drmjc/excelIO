@@ -68,9 +68,13 @@ write.xlsx <- function(x, xlsx, verbose=FALSE, row.names=FALSE, col.names=TRUE, 
 		
 	}
 
-	###
-	tab2xlsx <- file.path(path.package('excelIO'), 'bin', 'tab2xlsx')
-	file.exists(tab2xlsx) || stop("Couldn't find tab2xlsx, thus can't create Excel files. Are you sure you have excelIO installed?")
+	### this path needs to work for testthat (ie locally) and once installed.
+	tab2xlsx <- c(
+		file.path(path.package('excelIO'), 'bin', 'tab2xlsx'),
+		file.path(path.package('excelIO'), 'inst', 'bin', 'tab2xlsx')
+	)
+	tab2xlsx <- tab2xlsx[file.exists(tab2xlsx)]
+	length(tab2xlsx) == 1 || stop(paste("Couldn't find tab2xlsx, at ", tab2xlsx))
 	###
 
 	###
@@ -113,3 +117,4 @@ write.xlsx <- function(x, xlsx, verbose=FALSE, row.names=FALSE, col.names=TRUE, 
 }
 # CHANGELOG
 # 2016-04-14: clone from write.xls, and updated to use Excel::Writer::XLSX
+# 2017-01-17: update tab2xlsx path to let testthat work locally

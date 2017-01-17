@@ -68,9 +68,13 @@ write.xls <- function(x, xls, verbose=FALSE, row.names=FALSE, col.names=TRUE, ..
 		
 	}
 
-	###
-	tab2xls <- file.path(path.package('excelIO'), 'bin', 'tab2xls')
-	file.exists(tab2xls) || stop("Couldn't find tab2xls, thus can't create Excel files. Are you sure you have excelIO installed?")
+	### this path needs to work for testthat (ie locally) and once installed.
+	tab2xls <- c(
+		file.path(path.package('excelIO'), 'bin', 'tab2xls'),
+		file.path(path.package('excelIO'), 'inst', 'bin', 'tab2xls')
+	)
+	tab2xls <- tab2xls[file.exists(tab2xls)]
+	length(tab2xls) == 1 || stop(paste("Couldn't find tab2xls, at ", tab2xls))
 	###
 
 	###
@@ -113,3 +117,4 @@ write.xls <- function(x, xls, verbose=FALSE, row.names=FALSE, col.names=TRUE, ..
 }
 # CHANGELOG
 # 2013-04-15: bug fix, when x is a list.
+# 2017-01-17: update tab2xls path to let testthat work locally
