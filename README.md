@@ -8,7 +8,7 @@ Installation
 Ensure that the perl module Spreadsheet::WriteExcel is installed.
 
     perl -MCPAN -e 'install "Spreadsheet::WriteExcel"'
-    perl -MCPAN -e 'install "Excel::WriteExcel::XLSX"'
+    perl -MCPAN -e 'install "Excel::Writer::XLSX"'
 
 Install the R package
 
